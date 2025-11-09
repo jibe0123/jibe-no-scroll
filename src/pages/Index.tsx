@@ -4,12 +4,16 @@ import { ThemeToggle } from '@/components/ThemeToggle';
 
 const Index = () => {
   return (
-    <div className="h-screen w-screen flex items-center">
-      {/* Left Column - Text */}
-      <div className="w-1/2 h-full flex flex-col justify-center px-12 lg:px-20 relative">
-        <div className="absolute top-8 right-12">
+    <div className="h-screen w-screen p-4 md:p-6 lg:p-8">
+      {/* Border Container */}
+      <div className="h-full w-full border border-foreground/20 flex items-center relative">
+        {/* Theme Toggle - Top Right */}
+        <div className="absolute top-6 right-6 z-10">
           <ThemeToggle />
         </div>
+        
+        {/* Left Column - Text */}
+        <div className="w-1/2 h-full flex flex-col justify-center px-12 lg:px-20 relative">
         
         <div className="space-y-6 max-w-xl">
           {/* H1 */}
@@ -71,6 +75,7 @@ const Index = () => {
         <div className="w-full h-full max-h-[80vh]">
           <AnimatedBlob />
         </div>
+      </div>
       </div>
     </div>
   );

@@ -1,10 +1,12 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 
 export const AnimatedBlob = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const { theme } = useTheme();
   const animationIdRef = useRef<number>();
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [isHovering, setIsHovering] = useState(false);
   
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -33,14 +35,43 @@ export const AnimatedBlob = () => {
     const numPoints = 8;
     const baseRadius = Math.min(canvas.width, canvas.height) * 0.35;
     
+    // Mouse interaction
+    const handleMouseMove = (e: MouseEvent) => {
+      const rect = canvas.getBoundingClientRect();
+      setMousePos({
+        x: e.clientX - rect.left,
+        y: e.clientY - rect.top
+      });
+      setIsHovering(true);
+    };
+    
+    const handleMouseLeave = () => {
+      setIsHovering(false);
+    };
+    
+    canvas.addEventListener('mousemove', handleMouseMove);
+    canvas.addEventListener('mouseleave', handleMouseLeave);
+    
     const animate = () => {
       if (!ctx || !canvas) return;
       
       const rect = canvas.getBoundingClientRect();
       ctx.clearRect(0, 0, rect.width, rect.height);
       
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
+      let centerX = rect.width / 2;
+      let centerY = rect.height / 2;
+      
+      // Apply mouse interaction - blob follows cursor
+      if (isHovering) {
+        const dx = mousePos.x - centerX;
+        const dy = mousePos.y - centerY;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        const maxOffset = baseRadius * 0.3;
+        const influence = Math.min(distance, maxOffset) / maxOffset;
+        
+        centerX += dx * influence * 0.15;
+        centerY += dy * influence * 0.15;
+      }
       
       // Create blob shape with noise
       ctx.beginPath();
@@ -109,16 +140,18 @@ export const AnimatedBlob = () => {
     
     return () => {
       window.removeEventListener('resize', resizeCanvas);
+      canvas.removeEventListener('mousemove', handleMouseMove);
+      canvas.removeEventListener('mouseleave', handleMouseLeave);
       if (animationIdRef.current) {
         cancelAnimationFrame(animationIdRef.current);
       }
     };
-  }, [theme]);
+  }, [theme, mousePos, isHovering]);
   
   return (
     <canvas 
       ref={canvasRef} 
-      className="w-full h-full"
+      className="w-full h-full cursor-pointer"
       aria-hidden="true"
     />
   );
