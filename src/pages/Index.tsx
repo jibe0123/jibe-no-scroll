@@ -1,6 +1,7 @@
 import { Github, Linkedin, Mail } from 'lucide-react';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { AnimatedIllustration } from '@/components/AnimatedIllustration';
+import { StatusLed } from '@/components/StatusLed';
 
 const Index = () => {
   return (
@@ -27,7 +28,8 @@ const Index = () => {
           </p>
           
           {/* Micro-mention */}
-          <p className="text-[clamp(13px,1.5vw,14px)] text-muted-foreground">
+          <p className="text-[clamp(13px,1.5vw,14px)] text-muted-foreground flex items-center gap-2">
+            <StatusLed />
             Disponible — Remote EU / Paris
           </p>
           
