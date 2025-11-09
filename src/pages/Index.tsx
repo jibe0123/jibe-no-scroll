@@ -5,7 +5,7 @@ const Index = () => {
   return (
     <div className="h-screen w-screen p-4 md:p-6 lg:p-8">
       {/* Border Container */}
-      <div className="h-full w-full border border-foreground/20 flex items-center relative">
+      <div className="h-full w-full border-2 border-foreground/20 rounded-2xl flex items-center relative">
         {/* Theme Toggle - Top Right */}
         <div className="absolute top-6 right-6 z-10">
           <ThemeToggle />
