@@ -28,15 +28,26 @@ const Index = () => {
           <p className="text-[clamp(16px,2vw,18px)] font-normal">
             Software engineer
           </p>
-          
-          {/* Micro-mention */}
-          <p className="text-[clamp(13px,1.5vw,14px)] text-muted-foreground flex items-center gap-2">
+
+          {/* Summary Section */}
+          <div className="pt-4 space-y-3">
+            <h2 className="text-sm font-semibold text-foreground/80 uppercase tracking-wider">
+              Summary
+            </h2>
+            <p className="text-[clamp(14px,1.5vw,15px)] text-muted-foreground leading-relaxed">
+              Développeur full-stack passionné par la création d'expériences web modernes et performantes. 
+              Spécialisé en React, TypeScript et architecture cloud.
+            </p>
+          </div>
+
+          {/* Disponible Status */}
+          <p className="text-[clamp(13px,1.5vw,14px)] text-muted-foreground flex items-center gap-2 pt-2">
             <StatusLed />
             Disponible — Remote EU / Paris
           </p>
           
           {/* Social Links */}
-          <div className="flex gap-4 pt-4">
+          <div className="flex gap-4">
             <a
               href="https://github.com"
               target="_blank"
@@ -72,34 +83,42 @@ const Index = () => {
             </a>
           </div>
 
-          {/* Summary Section */}
-          <div className="pt-8 space-y-3 border-t border-border/50 mt-8">
-            <h2 className="text-sm font-semibold text-foreground/80 uppercase tracking-wider">
-              Summary
-            </h2>
-            <p className="text-[clamp(14px,1.5vw,15px)] text-muted-foreground leading-relaxed">
-              Développeur full-stack passionné par la création d'expériences web modernes et performantes. 
-              Spécialisé en React, TypeScript et architecture cloud.
-            </p>
-          </div>
-
-          {/* Current Activity Section */}
-          <div className="pt-6 space-y-3">
+          {/* Current Activity Section - Enhanced */}
+          <div className="pt-8 space-y-4 border-t border-border/50 mt-8">
             <h2 className="text-sm font-semibold text-foreground/80 uppercase tracking-wider">
               Actuellement
             </h2>
-            <div className="space-y-2">
-              <div className="flex items-start gap-2">
-                <span className="text-primary text-lg">→</span>
-                <p className="text-[clamp(14px,1.5vw,15px)] text-muted-foreground">
-                  <span className="text-foreground font-medium">Projet:</span> Plateforme SaaS B2B avec React & Supabase
-                </p>
+            <div className="space-y-3">
+              <div className="group p-4 rounded-xl bg-secondary/30 hover:bg-secondary/50 border border-border/50 transition-all duration-300 hover:shadow-md">
+                <div className="flex items-start gap-3">
+                  <div className="mt-0.5 p-2 rounded-lg bg-primary/10 text-primary group-hover:scale-110 transition-transform duration-300">
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                    </svg>
+                  </div>
+                  <div className="flex-1">
+                    <p className="text-xs font-semibold text-foreground/60 uppercase tracking-wide mb-1">Projet</p>
+                    <p className="text-[clamp(14px,1.5vw,15px)] text-foreground font-medium leading-relaxed">
+                      Plateforme SaaS B2B avec React & Supabase
+                    </p>
+                  </div>
+                </div>
               </div>
-              <div className="flex items-start gap-2">
-                <span className="text-primary text-lg">→</span>
-                <p className="text-[clamp(14px,1.5vw,15px)] text-muted-foreground">
-                  <span className="text-foreground font-medium">Apprentissage:</span> Architecture microservices avec Kubernetes
-                </p>
+              
+              <div className="group p-4 rounded-xl bg-secondary/30 hover:bg-secondary/50 border border-border/50 transition-all duration-300 hover:shadow-md">
+                <div className="flex items-start gap-3">
+                  <div className="mt-0.5 p-2 rounded-lg bg-primary/10 text-primary group-hover:scale-110 transition-transform duration-300">
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                    </svg>
+                  </div>
+                  <div className="flex-1">
+                    <p className="text-xs font-semibold text-foreground/60 uppercase tracking-wide mb-1">Apprentissage</p>
+                    <p className="text-[clamp(14px,1.5vw,15px)] text-foreground font-medium leading-relaxed">
+                      Architecture microservices avec Kubernetes
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
