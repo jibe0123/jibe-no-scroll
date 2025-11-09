@@ -7,14 +7,14 @@ const Index = () => {
   return (
     <div className="h-screen w-screen p-4 md:p-6 lg:p-8">
       {/* Border Container */}
-      <div className="h-full w-full border-2 border-foreground/20 rounded-2xl flex items-center relative">
+      <div className="h-full w-full border-2 border-foreground/20 rounded-2xl flex flex-col md:flex-row items-center relative">
         {/* Theme Toggle - Top Left */}
         <div className="absolute top-6 left-6 z-10">
           <ThemeToggle />
         </div>
         
         {/* Left Column - Text */}
-        <div className="w-1/2 h-full flex flex-col justify-center px-12 lg:px-20 relative">
+        <div className="w-full md:w-1/2 min-h-[50vh] md:h-full flex flex-col justify-center px-6 md:px-12 lg:px-20 py-8 md:py-0 relative">
         
         <div className="space-y-6 max-w-xl">
           {/* H1 */}
@@ -69,11 +69,11 @@ const Index = () => {
         </div>
       </div>
       
-      {/* Vertical Divider */}
-      <div className="w-px h-full bg-border" />
+      {/* Divider */}
+      <div className="w-full h-px md:w-px md:h-full bg-border" />
       
       {/* Right Column - Animated Illustration */}
-      <div className="w-1/2 h-full flex items-center justify-center p-12">
+      <div className="w-full md:w-1/2 min-h-[40vh] md:h-full flex items-center justify-center p-6 md:p-12">
         <div className="w-full h-full">
           <AnimatedIllustration />
         </div>
