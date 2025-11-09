@@ -1,5 +1,4 @@
 import { Github, Linkedin, Mail } from 'lucide-react';
-import { AnimatedBlob } from '@/components/AnimatedBlob';
 import { ThemeToggle } from '@/components/ThemeToggle';
 
 const Index = () => {
@@ -70,11 +69,9 @@ const Index = () => {
       {/* Vertical Divider */}
       <div className="w-px h-full bg-border" />
       
-      {/* Right Column - Animated Blob */}
+      {/* Right Column - Simple Gradient */}
       <div className="w-1/2 h-full flex items-center justify-center p-12">
-        <div className="w-full h-full max-h-[80vh]">
-          <AnimatedBlob />
-        </div>
+        <div className="w-full h-full rounded-3xl bg-gradient-to-br from-gradient-start via-gradient-mid to-gradient-end opacity-80" />
       </div>
       </div>
     </div>
