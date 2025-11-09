@@ -69,9 +69,9 @@ const Index = () => {
       {/* Vertical Divider */}
       <div className="w-px h-full bg-border" />
       
-      {/* Right Column - Simple Gradient */}
+      {/* Right Column - Empty space for animated illustration */}
       <div className="w-1/2 h-full flex items-center justify-center p-12">
-        <div className="w-full h-full rounded-3xl bg-gradient-to-br from-gradient-start via-gradient-mid to-gradient-end opacity-80" />
+        {/* Illustration will go here */}
       </div>
       </div>
     </div>
