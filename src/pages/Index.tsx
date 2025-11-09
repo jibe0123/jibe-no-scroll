@@ -1,5 +1,6 @@
 import { Github, Linkedin, Mail } from 'lucide-react';
 import { ThemeToggle } from '@/components/ThemeToggle';
+import { AnimatedIllustration } from '@/components/AnimatedIllustration';
 
 const Index = () => {
   return (
@@ -69,9 +70,11 @@ const Index = () => {
       {/* Vertical Divider */}
       <div className="w-px h-full bg-border" />
       
-      {/* Right Column - Empty space for animated illustration */}
+      {/* Right Column - Animated Illustration */}
       <div className="w-1/2 h-full flex items-center justify-center p-12">
-        {/* Illustration will go here */}
+        <div className="w-full h-full">
+          <AnimatedIllustration />
+        </div>
       </div>
       </div>
     </div>
