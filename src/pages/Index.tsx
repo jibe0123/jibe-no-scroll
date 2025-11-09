@@ -2,8 +2,10 @@ import { Github, Linkedin, Mail } from 'lucide-react';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { AnimatedIllustration } from '@/components/AnimatedIllustration';
 import { StatusLed } from '@/components/StatusLed';
+import { useAnalytics } from '@/hooks/useAnalytics';
 
 const Index = () => {
+  const { trackSocialClick } = useAnalytics();
   return (
     <div className="h-screen w-screen p-4 md:p-6 lg:p-8">
       {/* Border Container */}
@@ -41,6 +43,7 @@ const Index = () => {
               rel="noopener noreferrer"
               aria-label="GitHub profile"
               title="GitHub"
+              onClick={() => trackSocialClick('github', 'https://github.com')}
               className="p-2 rounded-md hover:bg-secondary/50 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background transition-all duration-200 hover:-translate-y-0.5"
             >
               <Github className="w-5 h-5" />
@@ -52,6 +55,7 @@ const Index = () => {
               rel="noopener noreferrer"
               aria-label="LinkedIn profile"
               title="LinkedIn"
+              onClick={() => trackSocialClick('linkedin', 'https://linkedin.com')}
               className="p-2 rounded-md hover:bg-secondary/50 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background transition-all duration-200 hover:-translate-y-0.5"
             >
               <Linkedin className="w-5 h-5" />
@@ -61,6 +65,7 @@ const Index = () => {
               href="mailto:contact@example.com"
               aria-label="Send email"
               title="Email"
+              onClick={() => trackSocialClick('email', 'mailto:contact@example.com')}
               className="p-2 rounded-md hover:bg-secondary/50 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background transition-all duration-200 hover:-translate-y-0.5"
             >
               <Mail className="w-5 h-5" />
