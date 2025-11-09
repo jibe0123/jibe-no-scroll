@@ -71,6 +71,38 @@ const Index = () => {
               <Mail className="w-5 h-5" />
             </a>
           </div>
+
+          {/* Summary Section */}
+          <div className="pt-8 space-y-3 border-t border-border/50 mt-8">
+            <h2 className="text-sm font-semibold text-foreground/80 uppercase tracking-wider">
+              Summary
+            </h2>
+            <p className="text-[clamp(14px,1.5vw,15px)] text-muted-foreground leading-relaxed">
+              Développeur full-stack passionné par la création d'expériences web modernes et performantes. 
+              Spécialisé en React, TypeScript et architecture cloud.
+            </p>
+          </div>
+
+          {/* Current Activity Section */}
+          <div className="pt-6 space-y-3">
+            <h2 className="text-sm font-semibold text-foreground/80 uppercase tracking-wider">
+              Actuellement
+            </h2>
+            <div className="space-y-2">
+              <div className="flex items-start gap-2">
+                <span className="text-primary text-lg">→</span>
+                <p className="text-[clamp(14px,1.5vw,15px)] text-muted-foreground">
+                  <span className="text-foreground font-medium">Projet:</span> Plateforme SaaS B2B avec React & Supabase
+                </p>
+              </div>
+              <div className="flex items-start gap-2">
+                <span className="text-primary text-lg">→</span>
+                <p className="text-[clamp(14px,1.5vw,15px)] text-muted-foreground">
+                  <span className="text-foreground font-medium">Apprentissage:</span> Architecture microservices avec Kubernetes
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       
