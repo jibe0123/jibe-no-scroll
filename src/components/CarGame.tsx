@@ -52,22 +52,22 @@ export const CarGame = () => {
       // Top edge
       x = distance;
       y = 0;
-      rotation = 90;
+      rotation = 0;
     } else if (distance < containerWidth + containerHeight) {
       // Right edge
       x = containerWidth;
       y = distance - containerWidth;
-      rotation = 180;
+      rotation = 90;
     } else if (distance < 2 * containerWidth + containerHeight) {
       // Bottom edge
       x = containerWidth - (distance - containerWidth - containerHeight);
       y = containerHeight;
-      rotation = 270;
+      rotation = 180;
     } else {
       // Left edge
       x = 0;
       y = containerHeight - (distance - 2 * containerWidth - containerHeight);
-      rotation = 0;
+      rotation = 270;
     }
 
     if (direction === 'backward') {
