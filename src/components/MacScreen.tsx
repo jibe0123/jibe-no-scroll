@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Maximize2, Minimize2 } from 'lucide-react';
 import { Terminal } from './Terminal';
 import { RaceGame } from './RaceGame';
 import { YouTubePlayer } from './YouTubePlayer';
@@ -18,6 +19,7 @@ export const MacScreen = () => {
   const [screenContent, setScreenContent] = useState<ScreenContent>('idle');
   const [isRacePlaying, setIsRacePlaying] = useState(false);
   const [laps, setLaps] = useState(0);
+  const [isFullscreen, setIsFullscreen] = useState(false);
 
   const handleCommand = (command: string) => {
     switch (command) {
@@ -224,8 +226,25 @@ export const MacScreen = () => {
   };
 
   return (
-    <div className="w-full h-full flex items-center justify-center p-4">
-      <div className="w-full max-w-4xl h-full max-h-[700px] bg-[#2d2d2d] rounded-xl shadow-2xl overflow-hidden border-[6px] border-[#3d3d3d]">
+    <div className={`flex items-center justify-center transition-all duration-300 ${
+      isFullscreen 
+        ? 'fixed inset-0 z-50 bg-background p-2' 
+        : 'w-full h-full p-4'
+    }`}>
+      <div className={`relative bg-[#2d2d2d] rounded-xl shadow-2xl overflow-hidden border-[6px] border-[#3d3d3d] transition-all duration-300 ${
+        isFullscreen 
+          ? 'w-full h-full max-w-none max-h-none' 
+          : 'w-full h-full'
+      }`}>
+        {/* Fullscreen Toggle Button */}
+        <button
+          onClick={() => setIsFullscreen(!isFullscreen)}
+          className="absolute top-12 right-4 z-20 p-2 bg-background/80 hover:bg-background rounded-lg transition-colors text-foreground/70 hover:text-foreground"
+          aria-label={isFullscreen ? "Exit fullscreen" : "Enter fullscreen"}
+        >
+          {isFullscreen ? <Minimize2 className="w-4 h-4" /> : <Maximize2 className="w-4 h-4" />}
+        </button>
+
         {/* Mac Window Header */}
         <div className="h-10 bg-[#323232] flex items-center px-4 gap-2 border-b border-[#1e1e1e]">
           <div className="flex gap-2">

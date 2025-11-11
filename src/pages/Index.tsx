@@ -45,8 +45,8 @@ const Index = () => {
           <ThemeToggle />
         </div>
         
-        {/* Left Column - Text */}
-        <div className="w-full md:w-1/2 min-h-[50vh] md:h-full flex flex-col justify-center px-6 md:px-12 lg:px-20 py-8 md:py-0 relative">
+        {/* Left Column - Business Card */}
+        <div className="w-full md:w-1/2 h-full flex flex-col justify-center px-6 md:px-12 lg:px-20 py-8 md:py-0 relative overflow-y-auto">
         
         <div className="space-y-6 max-w-xl">
           {/* H1 with highlight */}
@@ -132,8 +132,6 @@ const Index = () => {
 
           {/* Crypto Info - Discreet & Fixed */}
           <div className="pt-8 border-t border-border/30 space-y-3">
-            <p className="text-xs text-muted-foreground/60 uppercase tracking-wider">🔐</p>
-            
             <div className="space-y-2 text-[10px] font-mono">
               {/* PGP Key */}
               <div className="group">
@@ -250,11 +248,11 @@ v35Y+YikLoX5DsNlTxrlSQ3Z3g==
         </div>
       </div>
       
-      {/* Divider */}
-      <div className="w-full h-px md:w-px md:h-full bg-border" />
+      {/* Divider - Hidden on mobile */}
+      <div className="hidden md:block w-px h-full bg-border" />
       
-      {/* Right Column - Mac Computer */}
-      <div className="w-full md:w-1/2 min-h-[40vh] md:h-full flex items-center justify-center">
+      {/* Right Column - Mac Computer - Hidden on mobile */}
+      <div className="hidden md:flex md:w-1/2 h-full items-center justify-center">
         <MacScreen />
       </div>
       </div>
