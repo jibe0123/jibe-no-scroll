@@ -49,25 +49,25 @@ export const CarGame = () => {
     let x = 0, y = 0, rotation = 0;
 
     if (distance < containerWidth) {
-      // Top edge
+      // Top edge - going right
       x = distance;
-      y = 0;
-      rotation = 0;
-    } else if (distance < containerWidth + containerHeight) {
-      // Right edge
-      x = containerWidth;
-      y = distance - containerWidth;
+      y = -16;
       rotation = 90;
+    } else if (distance < containerWidth + containerHeight) {
+      // Right edge - going down
+      x = containerWidth;
+      y = distance - containerWidth - 16;
+      rotation = 180;
     } else if (distance < 2 * containerWidth + containerHeight) {
-      // Bottom edge
+      // Bottom edge - going left
       x = containerWidth - (distance - containerWidth - containerHeight);
       y = containerHeight;
-      rotation = 180;
-    } else {
-      // Left edge
-      x = 0;
-      y = containerHeight - (distance - 2 * containerWidth - containerHeight);
       rotation = 270;
+    } else {
+      // Left edge - going up
+      x = -16;
+      y = containerHeight - (distance - 2 * containerWidth - containerHeight);
+      rotation = 0;
     }
 
     if (direction === 'backward') {
