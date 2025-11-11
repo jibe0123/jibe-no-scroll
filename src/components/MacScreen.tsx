@@ -105,12 +105,6 @@ export const MacScreen = () => {
                 <p><span className="text-green-400">musique</span> - Open Spotify player</p>
                 <p><span className="text-green-400">video</span> - Open YouTube player</p>
                 <p><span className="text-green-400">clear</span> - Clear the screen</p>
-                <p className="text-yellow-400 pt-2">🤫 Try these secret commands:</p>
-                <p><span className="text-cyan-400">matrix</span> - Enter the Matrix</p>
-                <p><span className="text-cyan-400">hack</span> - Become a hacker</p>
-                <p><span className="text-cyan-400">nyan</span> - Nyan Cat!</p>
-                <p><span className="text-cyan-400">glitch</span> - System glitch</p>
-                <p><span className="text-cyan-400">party</span> - Party mode!</p>
               </div>
             </div>
           </div>

@@ -62,18 +62,18 @@ const Index = () => {
 
           {/* Description */}
           <div className="pt-4">
-            <p className="text-[clamp(14px,1.5vw,15px)] text-muted-foreground leading-relaxed">
-              {t.description.split('React').map((part, index, array) => 
-                index < array.length - 1 ? (
-                  <span key={index}>
-                    {part}
-                    <span className="relative inline-block mx-1">
-                      <span className="relative z-10 font-semibold text-foreground">React</span>
-                      <span className="absolute bottom-0 left-0 w-full h-2 bg-red-500/20 -z-0"></span>
-                    </span>
+            <p className="text-[clamp(14px,1.5vw,15px)] text-muted-foreground leading-relaxed whitespace-pre-line">
+              {t.description.split(/\b(Golang|Python|TypeScript|AI|ML\/DL|IoT|Web3)\b/).map((part, index) => {
+                const isHighlighted = ['Golang', 'Python', 'TypeScript', 'AI', 'ML/DL', 'IoT', 'Web3'].includes(part);
+                return isHighlighted ? (
+                  <span key={index} className="relative inline-block mx-0.5">
+                    <span className="relative z-10 font-semibold text-foreground">{part}</span>
+                    <span className="absolute bottom-0 left-0 w-full h-2 bg-red-500/20 -z-0"></span>
                   </span>
-                ) : part
-              )}
+                ) : (
+                  <span key={index}>{part}</span>
+                );
+              })}
             </p>
           </div>
 
