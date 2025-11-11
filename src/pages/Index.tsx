@@ -1,6 +1,7 @@
+import { useState } from 'react';
 import { Github, Linkedin, Mail } from 'lucide-react';
 import { ThemeToggle } from '@/components/ThemeToggle';
-import { AnimatedIllustration } from '@/components/AnimatedIllustration';
+import { RaceGame } from '@/components/RaceGame';
 import { StatusLed } from '@/components/StatusLed';
 import { CarGame } from '@/components/CarGame';
 import { useAnalytics } from '@/hooks/useAnalytics';
@@ -9,6 +10,8 @@ import confetti from 'canvas-confetti';
 
 const Index = () => {
   const { trackSocialClick } = useAnalytics();
+  const [isGamePlaying, setIsGamePlaying] = useState(false);
+  const [laps, setLaps] = useState(0);
   
   useKonamiCode(() => {
     confetti({
@@ -112,7 +115,10 @@ const Index = () => {
 
           {/* Car Game Button */}
           <div className="pt-4">
-            <CarGame />
+            <CarGame 
+              onGameStateChange={setIsGamePlaying}
+              onLapsChange={setLaps}
+            />
           </div>
         </div>
       </div>
@@ -120,11 +126,41 @@ const Index = () => {
       {/* Divider */}
       <div className="w-full h-px md:w-px md:h-full bg-border" />
       
-      {/* Right Column - Animated Illustration */}
-      <div className="w-full md:w-1/2 min-h-[40vh] md:h-full flex items-center justify-center p-6 md:p-12">
+      {/* Right Column - Race Game */}
+      <div className="w-full md:w-1/2 min-h-[40vh] md:h-full flex items-center justify-center p-6 md:p-12 relative">
         <div className="w-full h-full">
-          <AnimatedIllustration />
+          <RaceGame 
+            isPlaying={isGamePlaying}
+            onLapComplete={setLaps}
+          />
         </div>
+        
+        {/* Lap Counter Overlay */}
+        {isGamePlaying && (
+          <div className="absolute top-8 right-8 bg-background/95 backdrop-blur-sm border-2 border-primary/50 rounded-xl p-4 shadow-lg animate-fade-in">
+            <div className="text-center">
+              <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-1">
+                Tours
+              </p>
+              <p className="text-4xl font-bold text-primary">
+                {laps}
+              </p>
+            </div>
+            <div className="mt-3 pt-3 border-t border-border/50 space-y-1">
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 bg-primary rounded-sm"></div>
+                <p className="text-xs text-muted-foreground">Vous</p>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 bg-destructive rounded-sm"></div>
+                <p className="text-xs text-muted-foreground">IA</p>
+              </div>
+              <p className="text-xs text-muted-foreground text-center pt-2">
+                ↑ ↓ ou ← →
+              </p>
+            </div>
+          </div>
+        )}
       </div>
       </div>
     </div>
