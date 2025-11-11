@@ -2,6 +2,7 @@ import { Github, Linkedin, Mail } from 'lucide-react';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { AnimatedIllustration } from '@/components/AnimatedIllustration';
 import { StatusLed } from '@/components/StatusLed';
+import { CarGame } from '@/components/CarGame';
 import { useAnalytics } from '@/hooks/useAnalytics';
 import { useKonamiCode } from '@/hooks/useKonamiCode';
 import confetti from 'canvas-confetti';
@@ -107,6 +108,11 @@ const Index = () => {
             >
               <Mail className="w-5 h-5" />
             </a>
+          </div>
+
+          {/* Car Game Button */}
+          <div className="pt-4">
+            <CarGame />
           </div>
         </div>
       </div>
