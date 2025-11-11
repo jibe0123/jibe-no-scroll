@@ -130,32 +130,117 @@ const Index = () => {
             </a>
           </div>
 
-          {/* Crypto Info - Discreet */}
-          <details className="pt-6 group">
-            <summary className="text-xs text-muted-foreground/50 hover:text-muted-foreground cursor-pointer transition-colors">
-              🔐 Security & Crypto
-            </summary>
-            <div className="mt-3 space-y-2 text-xs font-mono">
-              <div className="flex items-start gap-2">
-                <span className="text-muted-foreground/70 min-w-[3rem]">PGP:</span>
-                <code className="text-[10px] text-muted-foreground/80 break-all hover:text-foreground transition-colors cursor-pointer">
-                  [Your PGP Key]
+          {/* Crypto Info - Discreet & Fixed */}
+          <div className="pt-8 border-t border-border/30 space-y-3">
+            <p className="text-xs text-muted-foreground/60 uppercase tracking-wider">🔐 Security</p>
+            
+            <div className="space-y-2 text-[10px] font-mono">
+              {/* PGP Key */}
+              <div className="group">
+                <div className="flex items-center justify-between mb-1">
+                  <span className="text-muted-foreground/70">PGP Key</span>
+                  <button
+                    onClick={() => {
+                      navigator.clipboard.writeText(`-----BEGIN PGP PUBLIC KEY BLOCK-----
+
+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
+v35Y+YikLoX5DsNlTxrlSQ3Z3g==
+=sOc0
+-----END PGP PUBLIC KEY BLOCK-----`);
+                    }}
+                    className="text-[9px] text-muted-foreground/50 hover:text-foreground transition-colors px-2 py-0.5 rounded hover:bg-secondary/50"
+                  >
+                    Copy
+                  </button>
+                </div>
+                <code className="block text-muted-foreground/70 break-all hover:text-foreground transition-colors cursor-pointer leading-tight">
+                  D759301818E4B514BC0E7979CE33102F60B0DD6B
                 </code>
               </div>
-              <div className="flex items-start gap-2">
-                <span className="text-muted-foreground/70 min-w-[3rem]">BTC:</span>
-                <code className="text-[10px] text-muted-foreground/80 break-all hover:text-foreground transition-colors cursor-pointer">
+
+              {/* BTC Address */}
+              <div className="group">
+                <div className="flex items-center justify-between mb-1">
+                  <span className="text-muted-foreground/70">BTC</span>
+                  <button
+                    onClick={() => {
+                      navigator.clipboard.writeText('[Your BTC Address]');
+                    }}
+                    className="text-[9px] text-muted-foreground/50 hover:text-foreground transition-colors px-2 py-0.5 rounded hover:bg-secondary/50"
+                  >
+                    Copy
+                  </button>
+                </div>
+                <code className="block text-muted-foreground/70 break-all hover:text-foreground transition-colors cursor-pointer">
                   [Your BTC Address]
                 </code>
               </div>
-              <div className="flex items-start gap-2">
-                <span className="text-muted-foreground/70 min-w-[3rem]">ETH:</span>
-                <code className="text-[10px] text-muted-foreground/80 break-all hover:text-foreground transition-colors cursor-pointer">
+
+              {/* ETH Address */}
+              <div className="group">
+                <div className="flex items-center justify-between mb-1">
+                  <span className="text-muted-foreground/70">ETH</span>
+                  <button
+                    onClick={() => {
+                      navigator.clipboard.writeText('[Your ETH Address]');
+                    }}
+                    className="text-[9px] text-muted-foreground/50 hover:text-foreground transition-colors px-2 py-0.5 rounded hover:bg-secondary/50"
+                  >
+                    Copy
+                  </button>
+                </div>
+                <code className="block text-muted-foreground/70 break-all hover:text-foreground transition-colors cursor-pointer">
                   [Your ETH Address]
                 </code>
               </div>
             </div>
-          </details>
+          </div>
         </div>
       </div>
       
