@@ -2,8 +2,13 @@ import { useState } from 'react';
 import { Terminal } from './Terminal';
 import { RaceGame } from './RaceGame';
 import { YouTubePlayer } from './YouTubePlayer';
+import { MatrixEffect } from './MatrixEffect';
+import { HackSimulator } from './HackSimulator';
+import { NyanCat } from './NyanCat';
+import { GlitchEffect } from './GlitchEffect';
+import confetti from 'canvas-confetti';
 
-type ScreenContent = 'idle' | 'race' | 'music' | 'video' | 'help';
+type ScreenContent = 'idle' | 'race' | 'music' | 'video' | 'help' | 'matrix' | 'hack' | 'nyan' | 'glitch' | 'party';
 
 export const MacScreen = () => {
   const [screenContent, setScreenContent] = useState<ScreenContent>('idle');
@@ -30,12 +35,59 @@ export const MacScreen = () => {
         setScreenContent('video');
         setIsRacePlaying(false);
         break;
+      case 'matrix':
+        setScreenContent('matrix');
+        setIsRacePlaying(false);
+        break;
+      case 'hack':
+        setScreenContent('hack');
+        setIsRacePlaying(false);
+        break;
+      case 'nyan':
+        setScreenContent('nyan');
+        setIsRacePlaying(false);
+        break;
+      case 'glitch':
+        setScreenContent('glitch');
+        setIsRacePlaying(false);
+        break;
+      case 'party':
+        setScreenContent('party');
+        setIsRacePlaying(false);
+        // Trigger confetti
+        const duration = 3000;
+        const end = Date.now() + duration;
+        const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff'];
+        
+        const frame = () => {
+          confetti({
+            particleCount: 3,
+            angle: 60,
+            spread: 55,
+            origin: { x: 0 },
+            colors: colors
+          });
+          confetti({
+            particleCount: 3,
+            angle: 120,
+            spread: 55,
+            origin: { x: 1 },
+            colors: colors
+          });
+
+          if (Date.now() < end) {
+            requestAnimationFrame(frame);
+          }
+        };
+        frame();
+        setTimeout(() => setScreenContent('idle'), duration);
+        break;
       case 'clear':
         setScreenContent('idle');
         setIsRacePlaying(false);
         break;
       default:
-        // Command not recognized, could add error handling
+        // Command not recognized
         break;
     }
   };
@@ -53,7 +105,31 @@ export const MacScreen = () => {
                 <p><span className="text-green-400">musique</span> - Open Spotify player</p>
                 <p><span className="text-green-400">video</span> - Open YouTube player</p>
                 <p><span className="text-green-400">clear</span> - Clear the screen</p>
+                <p className="text-yellow-400 pt-2">🤫 Try these secret commands:</p>
+                <p><span className="text-cyan-400">matrix</span> - Enter the Matrix</p>
+                <p><span className="text-cyan-400">hack</span> - Become a hacker</p>
+                <p><span className="text-cyan-400">nyan</span> - Nyan Cat!</p>
+                <p><span className="text-cyan-400">glitch</span> - System glitch</p>
+                <p><span className="text-cyan-400">party</span> - Party mode!</p>
               </div>
+            </div>
+          </div>
+        );
+      case 'matrix':
+        return <MatrixEffect />;
+      case 'hack':
+        return <HackSimulator />;
+      case 'nyan':
+        return <NyanCat />;
+      case 'glitch':
+        return <GlitchEffect />;
+      case 'party':
+        return (
+          <div className="h-full bg-gradient-to-br from-purple-500 via-pink-500 to-red-500 animate-pulse flex items-center justify-center">
+            <div className="text-center text-white">
+              <div className="text-8xl mb-4 animate-bounce">🎉</div>
+              <div className="text-6xl font-bold animate-pulse">PARTY MODE!</div>
+              <div className="text-2xl mt-4">🎊 🎈 🎁 🎊</div>
             </div>
           </div>
         );
