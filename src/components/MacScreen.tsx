@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Terminal } from './Terminal';
 import { RaceGame } from './RaceGame';
+import { YouTubePlayer } from './YouTubePlayer';
 
 type ScreenContent = 'idle' | 'race' | 'music' | 'video' | 'help';
 
@@ -107,21 +108,7 @@ export const MacScreen = () => {
           </div>
         );
       case 'video':
-        return (
-          <div className="flex items-center justify-center h-full bg-gradient-to-br from-red-900/20 to-background/50">
-            <div className="text-center space-y-6 p-8">
-              <div className="w-48 h-48 mx-auto bg-gradient-to-br from-red-600 to-red-700 rounded-lg shadow-2xl flex items-center justify-center">
-                <svg className="w-24 h-24 text-white" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                </svg>
-              </div>
-              <div className="space-y-2">
-                <h3 className="text-2xl font-bold text-foreground">YouTube Player</h3>
-                <p className="text-muted-foreground">Video player coming soon...</p>
-              </div>
-            </div>
-          </div>
-        );
+        return <YouTubePlayer />;
       default:
         return (
           <div className="flex items-center justify-center h-full text-muted-foreground font-mono">
