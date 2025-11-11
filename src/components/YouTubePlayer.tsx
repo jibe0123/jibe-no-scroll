@@ -39,18 +39,6 @@ export const YouTubePlayer = () => {
     }
   };
 
-  const popularVideos = [
-    { id: 'dQw4w9WgXcQ', title: 'Rick Astley - Never Gonna Give You Up' },
-    { id: 'jNQXAC9IVRw', title: 'Me at the zoo' },
-    { id: 'kJQP7kiw5Fk', title: 'Luis Fonsi - Despacito' },
-    { id: '9bZkp7q19f0', title: 'PSY - Gangnam Style' },
-  ];
-
-  const handleVideoSelect = (id: string) => {
-    setVideoId(id);
-    setIsPlaying(true);
-  };
-
   return (
     <div className="flex flex-col h-full bg-gradient-to-br from-red-900/10 to-background/50 p-4">
       {/* Search Bar */}
@@ -97,25 +85,6 @@ export const YouTubePlayer = () => {
             <p className="text-sm text-muted-foreground">
               Paste any YouTube URL or video ID above
             </p>
-          </div>
-
-          {/* Popular Videos */}
-          <div className="w-full max-w-md space-y-2">
-            <p className="text-xs text-muted-foreground text-center mb-3">Or try these:</p>
-            <div className="grid grid-cols-1 gap-2">
-              {popularVideos.map((video) => (
-                <Button
-                  key={video.id}
-                  variant="outline"
-                  size="sm"
-                  onClick={() => handleVideoSelect(video.id)}
-                  className="justify-start gap-2 hover:bg-secondary/70"
-                >
-                  <Play className="w-3 h-3" />
-                  <span className="text-xs truncate">{video.title}</span>
-                </Button>
-              ))}
-            </div>
           </div>
         </div>
       )}

@@ -5,11 +5,13 @@ import { StatusLed } from '@/components/StatusLed';
 import { useAnalytics } from '@/hooks/useAnalytics';
 import { useKonamiCode } from '@/hooks/useKonamiCode';
 import { useLanguage } from '@/hooks/useLanguage';
+import { useHighlightColor } from '@/hooks/useHighlightColor';
 import confetti from 'canvas-confetti';
 
 const Index = () => {
   const { trackSocialClick } = useAnalytics();
   const { t } = useLanguage();
+  const highlightColor = useHighlightColor();
   
   useKonamiCode(() => {
     confetti({
@@ -56,7 +58,7 @@ const Index = () => {
           <p className="text-[clamp(16px,2vw,18px)] font-normal">
             <span className="relative inline-block">
               <span className="relative z-10 font-semibold px-1">{t.subtitle}</span>
-              <span className="absolute bottom-0 left-0 w-full h-3 bg-yellow-400/50 -z-0 rounded-sm"></span>
+              <span className={`absolute bottom-0 left-0 w-full h-3 ${highlightColor} -z-0 rounded-sm`}></span>
             </span>
           </p>
 
@@ -68,15 +70,10 @@ const Index = () => {
                 const isHighlighted = keywords.includes(part);
                 
                 if (isHighlighted) {
-                  // Assign random color based on the word itself (consistent across renders)
-                  const colors = ['bg-red-500/50', 'bg-yellow-400/50', 'bg-pink-500/50'];
-                  const colorIndex = part.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0) % colors.length;
-                  const bgColor = colors[colorIndex];
-                  
                   return (
                     <span key={index} className="relative inline-block mx-0.5">
                       <span className="relative z-10 font-bold text-foreground px-1">{part}</span>
-                      <span className={`absolute bottom-0 left-0 w-full h-3 ${bgColor} -z-0 rounded-sm`}></span>
+                      <span className={`absolute bottom-0 left-0 w-full h-3 ${highlightColor} -z-0 rounded-sm`}></span>
                     </span>
                   );
                 }
@@ -90,7 +87,7 @@ const Index = () => {
             <StatusLed />
             <span className="relative inline-block">
               <span className="relative z-10 font-bold px-1">{t.available}</span>
-              <span className="absolute bottom-0 left-0 w-full h-2.5 bg-red-500/50 -z-0 rounded-sm"></span>
+              <span className={`absolute bottom-0 left-0 w-full h-2.5 ${highlightColor} -z-0 rounded-sm`}></span>
             </span>
             <span className="mx-1">—</span>
             {t.location}
@@ -132,6 +129,33 @@ const Index = () => {
               <Mail className="w-5 h-5" />
             </a>
           </div>
+
+          {/* Crypto Info - Discreet */}
+          <details className="pt-6 group">
+            <summary className="text-xs text-muted-foreground/50 hover:text-muted-foreground cursor-pointer transition-colors">
+              🔐 Security & Crypto
+            </summary>
+            <div className="mt-3 space-y-2 text-xs font-mono">
+              <div className="flex items-start gap-2">
+                <span className="text-muted-foreground/70 min-w-[3rem]">PGP:</span>
+                <code className="text-[10px] text-muted-foreground/80 break-all hover:text-foreground transition-colors cursor-pointer">
+                  [Your PGP Key]
+                </code>
+              </div>
+              <div className="flex items-start gap-2">
+                <span className="text-muted-foreground/70 min-w-[3rem]">BTC:</span>
+                <code className="text-[10px] text-muted-foreground/80 break-all hover:text-foreground transition-colors cursor-pointer">
+                  [Your BTC Address]
+                </code>
+              </div>
+              <div className="flex items-start gap-2">
+                <span className="text-muted-foreground/70 min-w-[3rem]">ETH:</span>
+                <code className="text-[10px] text-muted-foreground/80 break-all hover:text-foreground transition-colors cursor-pointer">
+                  [Your ETH Address]
+                </code>
+              </div>
+            </div>
+          </details>
         </div>
       </div>
       
