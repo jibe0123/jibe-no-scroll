@@ -6,9 +6,12 @@ import { MatrixEffect } from './MatrixEffect';
 import { HackSimulator } from './HackSimulator';
 import { NyanCat } from './NyanCat';
 import { GlitchEffect } from './GlitchEffect';
+import { SnakeGame } from './SnakeGame';
+import { TicTacToe } from './TicTacToe';
+import { TetrisGame } from './TetrisGame';
 import confetti from 'canvas-confetti';
 
-type ScreenContent = 'idle' | 'race' | 'music' | 'video' | 'help' | 'matrix' | 'hack' | 'nyan' | 'glitch' | 'party';
+type ScreenContent = 'idle' | 'race' | 'music' | 'video' | 'help' | 'matrix' | 'hack' | 'nyan' | 'glitch' | 'party' | 'snake' | 'morpion' | 'tetris';
 
 export const MacScreen = () => {
   const [screenContent, setScreenContent] = useState<ScreenContent>('idle');
@@ -82,6 +85,18 @@ export const MacScreen = () => {
         frame();
         setTimeout(() => setScreenContent('idle'), duration);
         break;
+      case 'snake':
+        setScreenContent('snake');
+        setIsRacePlaying(false);
+        break;
+      case 'morpion':
+        setScreenContent('morpion');
+        setIsRacePlaying(false);
+        break;
+      case 'tetris':
+        setScreenContent('tetris');
+        setIsRacePlaying(false);
+        break;
       case 'clear':
         setScreenContent('idle');
         setIsRacePlaying(false);
@@ -127,6 +142,12 @@ export const MacScreen = () => {
             </div>
           </div>
         );
+      case 'snake':
+        return <SnakeGame />;
+      case 'morpion':
+        return <TicTacToe />;
+      case 'tetris':
+        return <TetrisGame />;
       case 'race':
         return (
           <div className="relative w-full h-full bg-background/50">
