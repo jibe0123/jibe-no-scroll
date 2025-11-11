@@ -3,9 +3,35 @@ import { ThemeToggle } from '@/components/ThemeToggle';
 import { AnimatedIllustration } from '@/components/AnimatedIllustration';
 import { StatusLed } from '@/components/StatusLed';
 import { useAnalytics } from '@/hooks/useAnalytics';
+import { useKonamiCode } from '@/hooks/useKonamiCode';
+import confetti from 'canvas-confetti';
 
 const Index = () => {
   const { trackSocialClick } = useAnalytics();
+  
+  useKonamiCode(() => {
+    confetti({
+      particleCount: 100,
+      spread: 70,
+      origin: { y: 0.6 }
+    });
+    setTimeout(() => {
+      confetti({
+        particleCount: 50,
+        angle: 60,
+        spread: 55,
+        origin: { x: 0 }
+      });
+    }, 250);
+    setTimeout(() => {
+      confetti({
+        particleCount: 50,
+        angle: 120,
+        spread: 55,
+        origin: { x: 1 }
+      });
+    }, 400);
+  });
   return (
     <div className="h-screen w-screen p-4 md:p-6 lg:p-8">
       {/* Border Container */}
