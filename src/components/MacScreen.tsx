@@ -9,9 +9,10 @@ import { GlitchEffect } from './GlitchEffect';
 import { SnakeGame } from './SnakeGame';
 import { TicTacToe } from './TicTacToe';
 import { TetrisGame } from './TetrisGame';
+import { HighScores } from './HighScores';
 import confetti from 'canvas-confetti';
 
-type ScreenContent = 'idle' | 'race' | 'music' | 'video' | 'help' | 'matrix' | 'hack' | 'nyan' | 'glitch' | 'party' | 'snake' | 'morpion' | 'tetris';
+type ScreenContent = 'idle' | 'race' | 'music' | 'video' | 'help' | 'matrix' | 'hack' | 'nyan' | 'glitch' | 'party' | 'snake' | 'morpion' | 'tetris' | 'scores';
 
 export const MacScreen = () => {
   const [screenContent, setScreenContent] = useState<ScreenContent>('idle');
@@ -97,6 +98,10 @@ export const MacScreen = () => {
         setScreenContent('tetris');
         setIsRacePlaying(false);
         break;
+      case 'scores':
+        setScreenContent('scores');
+        setIsRacePlaying(false);
+        break;
       case 'clear':
         setScreenContent('idle');
         setIsRacePlaying(false);
@@ -117,8 +122,12 @@ export const MacScreen = () => {
               <div className="space-y-2">
                 <p><span className="text-green-400">help</span> - Show this help message</p>
                 <p><span className="text-green-400">race</span> - Start the racing game</p>
+                <p><span className="text-green-400">snake</span> - Play Snake game</p>
+                <p><span className="text-green-400">morpion</span> - Play Tic-Tac-Toe</p>
+                <p><span className="text-green-400">tetris</span> - Play Tetris</p>
                 <p><span className="text-green-400">musique</span> - Open Spotify player</p>
                 <p><span className="text-green-400">video</span> - Open YouTube player</p>
+                <p><span className="text-green-400">scores</span> - View high scores</p>
                 <p><span className="text-green-400">clear</span> - Clear the screen</p>
               </div>
             </div>
@@ -148,6 +157,8 @@ export const MacScreen = () => {
         return <TicTacToe />;
       case 'tetris':
         return <TetrisGame />;
+      case 'scores':
+        return <HighScores />;
       case 'race':
         return (
           <div className="relative w-full h-full bg-background/50">

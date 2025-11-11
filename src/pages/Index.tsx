@@ -132,7 +132,7 @@ const Index = () => {
 
           {/* Crypto Info - Discreet & Fixed */}
           <div className="pt-8 border-t border-border/30 space-y-3">
-            <p className="text-xs text-muted-foreground/60 uppercase tracking-wider">🔐 Security</p>
+            <p className="text-xs text-muted-foreground/60 uppercase tracking-wider">🔐</p>
             
             <div className="space-y-2 text-[10px] font-mono">
               {/* PGP Key */}
@@ -193,6 +193,8 @@ RZU3v4m8Rn7M9rVbmLHhBGjg56tYduJCwx0taBy0flLY9l03nSBQJHO+acd3Bm8j
 v35Y+YikLoX5DsNlTxrlSQ3Z3g==
 =sOc0
 -----END PGP PUBLIC KEY BLOCK-----`);
+                      const { toast } = require('@/hooks/use-toast');
+                      toast({ description: '✓ PGP key copied!' });
                     }}
                     className="text-[9px] text-muted-foreground/50 hover:text-foreground transition-colors px-2 py-0.5 rounded hover:bg-secondary/50"
                   >
@@ -211,6 +213,8 @@ v35Y+YikLoX5DsNlTxrlSQ3Z3g==
                   <button
                     onClick={() => {
                       navigator.clipboard.writeText('[Your BTC Address]');
+                      const { toast } = require('@/hooks/use-toast');
+                      toast({ description: '✓ BTC address copied!' });
                     }}
                     className="text-[9px] text-muted-foreground/50 hover:text-foreground transition-colors px-2 py-0.5 rounded hover:bg-secondary/50"
                   >
@@ -229,6 +233,8 @@ v35Y+YikLoX5DsNlTxrlSQ3Z3g==
                   <button
                     onClick={() => {
                       navigator.clipboard.writeText('[Your ETH Address]');
+                      const { toast } = require('@/hooks/use-toast');
+                      toast({ description: '✓ ETH address copied!' });
                     }}
                     className="text-[9px] text-muted-foreground/50 hover:text-foreground transition-colors px-2 py-0.5 rounded hover:bg-secondary/50"
                   >

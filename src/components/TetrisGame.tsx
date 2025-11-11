@@ -1,4 +1,5 @@
 import { useEffect, useState, useCallback, useRef } from 'react';
+import { saveHighScore } from './HighScores';
 
 const BOARD_WIDTH = 10;
 const BOARD_HEIGHT = 20;
@@ -104,6 +105,7 @@ export const TetrisGame = () => {
       // Check game over
       if (checkCollision(SHAPES[0], { x: 4, y: 0 })) {
         setGameOver(true);
+        saveHighScore('tetris', score);
       }
     } else {
       setPosition(newPos);

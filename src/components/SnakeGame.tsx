@@ -1,4 +1,5 @@
 import { useEffect, useState, useCallback, useRef } from 'react';
+import { saveHighScore } from './HighScores';
 
 type Position = { x: number; y: number };
 type Direction = 'UP' | 'DOWN' | 'LEFT' | 'RIGHT';
@@ -52,6 +53,7 @@ export const SnakeGame = () => {
 
       if (checkCollision(head, prevSnake)) {
         setGameOver(true);
+        saveHighScore('snake', score);
         return prevSnake;
       }
 

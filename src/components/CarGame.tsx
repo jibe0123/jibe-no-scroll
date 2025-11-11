@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Play, X } from 'lucide-react';
+import { saveHighScore } from './HighScores';
 
 interface CarGameProps {
   onGameStateChange: (isPlaying: boolean) => void;
@@ -26,6 +27,7 @@ export const CarGame = ({ onGameStateChange, onLapsChange }: CarGameProps) => {
   const handleLapComplete = (newLaps: number) => {
     setLaps(newLaps);
     onLapsChange(newLaps);
+    saveHighScore('race', newLaps);
   };
 
   return (
