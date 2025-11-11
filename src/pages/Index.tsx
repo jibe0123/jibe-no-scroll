@@ -55,24 +55,32 @@ const Index = () => {
           {/* Subtitle with highlight */}
           <p className="text-[clamp(16px,2vw,18px)] font-normal">
             <span className="relative inline-block">
-              <span className="relative z-10">{t.subtitle}</span>
-              <span className="absolute bottom-1 left-0 w-full h-2 bg-red-500/30 -z-0"></span>
+              <span className="relative z-10 font-semibold px-1">{t.subtitle}</span>
+              <span className="absolute bottom-0 left-0 w-full h-3 bg-yellow-400/50 -z-0 rounded-sm"></span>
             </span>
           </p>
 
           {/* Description */}
           <div className="pt-4">
             <p className="text-[clamp(14px,1.5vw,15px)] text-muted-foreground leading-relaxed whitespace-pre-line">
-              {t.description.split(/\b(Golang|Python|TypeScript|AI|ML\/DL|IoT|Web3)\b/).map((part, index) => {
-                const isHighlighted = ['Golang', 'Python', 'TypeScript', 'AI', 'ML/DL', 'IoT', 'Web3'].includes(part);
-                return isHighlighted ? (
-                  <span key={index} className="relative inline-block mx-0.5">
-                    <span className="relative z-10 font-semibold text-foreground">{part}</span>
-                    <span className="absolute bottom-0 left-0 w-full h-2 bg-red-500/20 -z-0"></span>
-                  </span>
-                ) : (
-                  <span key={index}>{part}</span>
-                );
+              {t.description.split(/\b(Golang|Python|PHP|TypeScript|AI|ML\/DL|IoT|Web3|Agentic)\b/).map((part, index) => {
+                const keywords = ['Golang', 'Python', 'PHP', 'TypeScript', 'AI', 'ML/DL', 'IoT', 'Web3', 'Agentic'];
+                const isHighlighted = keywords.includes(part);
+                
+                if (isHighlighted) {
+                  // Assign random color based on the word itself (consistent across renders)
+                  const colors = ['bg-red-500/50', 'bg-yellow-400/50', 'bg-pink-500/50'];
+                  const colorIndex = part.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0) % colors.length;
+                  const bgColor = colors[colorIndex];
+                  
+                  return (
+                    <span key={index} className="relative inline-block mx-0.5">
+                      <span className="relative z-10 font-bold text-foreground px-1">{part}</span>
+                      <span className={`absolute bottom-0 left-0 w-full h-3 ${bgColor} -z-0 rounded-sm`}></span>
+                    </span>
+                  );
+                }
+                return <span key={index}>{part}</span>;
               })}
             </p>
           </div>
@@ -81,8 +89,8 @@ const Index = () => {
           <p className="text-[clamp(13px,1.5vw,14px)] text-muted-foreground flex items-center gap-2 pt-2">
             <StatusLed />
             <span className="relative inline-block">
-              <span className="relative z-10 font-medium">{t.available}</span>
-              <span className="absolute bottom-0 left-0 w-full h-1.5 bg-red-500/25 -z-0"></span>
+              <span className="relative z-10 font-bold px-1">{t.available}</span>
+              <span className="absolute bottom-0 left-0 w-full h-2.5 bg-red-500/50 -z-0 rounded-sm"></span>
             </span>
             <span className="mx-1">—</span>
             {t.location}

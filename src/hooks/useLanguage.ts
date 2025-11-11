@@ -6,7 +6,7 @@ export const translations = {
   fr: {
     title: 'Jibe',
     subtitle: 'Backend & Data Engineer',
-    description: '👾 Backend & Data Engineer explorant l\'intersection des systèmes, données et intelligence. Je travaille avec Golang, Python, PHP et TypeScript, construisant des backends scalables et des pipelines de données efficaces. Infiniment curieux et toujours en apprentissage — des architectures backend aux frontières de l\'IA, ML/DL et IA Générative. Également fasciné par l\'IoT et le Web3, j\'aime expérimenter là où la technologie rencontre l\'impact réel. 🔥 Passionné d\'agentic, je crois que l\'avenir du logiciel réside dans la collaboration entre humains et systèmes intelligents — pas l\'automatisation pour elle-même, mais l\'augmentation avec un but.',
+    description: '👾 Backend & Data Engineer explorant l\'intersection des systèmes, données et intelligence.\n\nJe construis des backends scalables et pipelines de données avec Golang, Python, PHP et TypeScript. Passionné par l\'IA, ML/DL, IoT et Web3.\n\n🔥 Agentic enthusiast — je crois en la collaboration entre humains et systèmes intelligents, pas l\'automatisation aveugle mais l\'augmentation avec un but.',
     available: 'Disponible',
     location: 'Remote EU / Paris',
     github: 'Profil GitHub',
@@ -18,7 +18,7 @@ export const translations = {
   en: {
     title: 'Jibe',
     subtitle: 'Backend & Data Engineer',
-    description: '👾 Backend & Data Engineer exploring the intersection of systems, data, and intelligence. I work with Golang, Python, PHP, and TypeScript, building scalable backends and efficient data pipelines. I\'m endlessly curious and always learning — from backend architectures to the frontiers of AI, ML/DL, and Generative AI. Equally fascinated by IoT and Web3, I like experimenting where technology meets real-world impact. 🔥 Agentic enthusiast, I believe the future of software lies in collaboration between humans and intelligent systems — not automation for its own sake, but augmentation with purpose.',
+    description: '👾 Backend & Data Engineer exploring the intersection of systems, data, and intelligence.\n\nI build scalable backends and data pipelines with Golang, Python, PHP, and TypeScript. Passionate about AI, ML/DL, IoT, and Web3.\n\n🔥 Agentic enthusiast — I believe in collaboration between humans and intelligent systems, not blind automation but augmentation with purpose.',
     available: 'Available',
     location: 'Remote EU / Paris',
     github: 'GitHub profile',
