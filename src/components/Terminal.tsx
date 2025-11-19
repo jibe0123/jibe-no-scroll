@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 
 interface TerminalProps {
-  onCommand: (command: string) => void;
+  onCommand: (command: string, args?: string[]) => void;
 }
 
 interface CommandHistory {
@@ -33,7 +33,13 @@ export const Terminal = ({ onCommand }: TerminalProps) => {
     ];
 
     setHistory(newHistory);
-    onCommand(input.trim().toLowerCase());
+    
+    // Parse command and arguments
+    const parts = input.trim().split(' ');
+    const command = parts[0].toLowerCase();
+    const args = parts.slice(1);
+    
+    onCommand(command, args);
     setInput('');
   };
 
