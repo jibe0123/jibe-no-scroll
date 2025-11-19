@@ -211,7 +211,7 @@ export const MacScreen = () => {
             <div className="space-y-6 max-w-3xl">
               <h2 className="text-2xl font-bold text-primary mb-4">Available Commands</h2>
               
-              <div className="space-y-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <div>
                   <h3 className="text-lg font-semibold text-primary/80 mb-2">🎮 Games</h3>
                   <div className="space-y-1 text-sm">
@@ -238,6 +238,19 @@ export const MacScreen = () => {
                 </div>
 
                 <div>
+                  <h3 className="text-lg font-semibold text-primary/80 mb-2">🎨 Fun & Effects</h3>
+                  <div className="space-y-1 text-sm">
+                    <p><span className="text-green-400">matrix</span> - Matrix effect</p>
+                    <p><span className="text-green-400">hack</span> - Hacking simulator</p>
+                    <p><span className="text-green-400">nyan</span> - Nyan Cat</p>
+                    <p><span className="text-green-400">glitch</span> - Glitch effect</p>
+                    <p><span className="text-green-400">party</span> - Party mode!</p>
+                    <p><span className="text-green-400">coffee</span> - Initialize caffeine</p>
+                    <p><span className="text-green-400">fortune</span> - Random quote</p>
+                  </div>
+                </div>
+
+                <div>
                   <h3 className="text-lg font-semibold text-primary/80 mb-2">📁 Navigation</h3>
                   <div className="space-y-1 text-sm">
                     <p><span className="text-green-400">ls</span> - List files/folders</p>
@@ -250,19 +263,6 @@ export const MacScreen = () => {
                   <div className="space-y-1 text-sm">
                     <p><span className="text-green-400">nasa</span> - NASA image of the day</p>
                     <p><span className="text-green-400">crypto</span> - Bitcoin price</p>
-                  </div>
-                </div>
-
-                <div>
-                  <h3 className="text-lg font-semibold text-primary/80 mb-2">🎨 Fun & Effects</h3>
-                  <div className="space-y-1 text-sm">
-                    <p><span className="text-green-400">matrix</span> - Matrix effect</p>
-                    <p><span className="text-green-400">hack</span> - Hacking simulator</p>
-                    <p><span className="text-green-400">nyan</span> - Nyan Cat</p>
-                    <p><span className="text-green-400">glitch</span> - Glitch effect</p>
-                    <p><span className="text-green-400">party</span> - Party mode!</p>
-                    <p><span className="text-green-400">coffee</span> - Initialize caffeine</p>
-                    <p><span className="text-green-400">fortune</span> - Random quote</p>
                   </div>
                 </div>
 
@@ -285,8 +285,8 @@ export const MacScreen = () => {
                   </div>
                 </div>
 
-                <div>
-                  <p className="text-xs text-muted-foreground mt-4">
+                <div className="col-span-1 md:col-span-2 lg:col-span-3">
+                  <p className="text-xs text-muted-foreground">
                     <span className="text-green-400">clear</span> - Clear screen
                   </p>
                 </div>
