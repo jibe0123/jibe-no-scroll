@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.png" type="image/png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Jibe — Software Engineer</title>
     <meta name="description" content="Software engineer available for remote collaboration in EU and Paris" />
@@ -9,6 +10,26 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    
+    <script>
+      // Animated scrolling title
+      const titles = [
+        'Jibe — Full-Stack Developer 🚀',
+        'Golang • Python • TypeScript 💻',
+        'AI & ML/DL Expert 🤖',
+        'IoT • Web3 • Agentic 🌐',
+        'Available for Remote Work ✨',
+        'Portfolio OS Explorer 🖥️'
+      ];
+      let currentIndex = 0;
+      
+      function animateTitle() {
+        document.title = titles[currentIndex];
+        currentIndex = (currentIndex + 1) % titles.length;
+      }
+      
+      setInterval(animateTitle, 3000);
+    </script>
 
     <meta property="og:title" content="Jibe — Software Engineer" />
     <meta property="og:description" content="Software engineer available for remote collaboration" />
