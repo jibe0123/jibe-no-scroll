@@ -1,6 +1,5 @@
-import { Github, Linkedin, Mail } from 'lucide-react';
+import { Github, Linkedin, Mail, Monitor, Sparkles } from 'lucide-react';
 import { ThemeToggle } from '@/components/ThemeToggle';
-import { MacScreen } from '@/components/MacScreen';
 import { StatusLed } from '@/components/StatusLed';
 import { useAnalytics } from '@/hooks/useAnalytics';
 import { useKonamiCode } from '@/hooks/useKonamiCode';
@@ -8,7 +7,6 @@ import { useLanguage } from '@/hooks/useLanguage';
 import { useHighlightColor } from '@/hooks/useHighlightColor';
 import confetti from 'canvas-confetti';
 import { Link } from 'react-router-dom';
-import { Monitor } from 'lucide-react';
 
 const Index = () => {
   const { trackSocialClick } = useAnalytics();
@@ -42,41 +40,32 @@ const Index = () => {
   return (
     <div className="h-screen w-screen p-4 md:p-6 lg:p-8">
       {/* Border Container */}
-      <div className="h-full w-full border-2 border-foreground/20 rounded-2xl flex flex-col md:flex-row items-center relative shadow-[0_8px_30px_rgb(0,0,0,0.12)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.4)]">
+      <div className="h-full w-full border-2 border-foreground/20 rounded-2xl flex items-center justify-center relative shadow-[0_8px_30px_rgb(0,0,0,0.12)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.4)]">
         {/* Theme Toggle - Top Left */}
         <div className="absolute top-6 left-6 z-10">
           <ThemeToggle />
         </div>
         
-        {/* OS Button - Top Right */}
-        <Link 
-          to="/os"
-          className="absolute top-6 right-6 z-10 flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-all hover:scale-105 shadow-lg"
-        >
-          <Monitor className="w-4 h-4" />
-          <span className="text-sm font-semibold">Lancer l'OS</span>
-        </Link>
+        {/* Main Content - Centered */}
+        <div className="w-full max-w-4xl flex flex-col justify-center px-6 md:px-12 lg:px-20 py-8 relative">
         
-        {/* Left Column - Business Card */}
-        <div className="w-full md:w-1/2 h-full flex flex-col justify-center px-6 md:px-12 lg:px-20 py-8 md:py-0 relative overflow-y-auto">
-        
-        <div className="space-y-6 max-w-xl">
-          {/* H1 with highlight */}
-          <h1 className="text-[clamp(48px,8vw,72px)] font-semibold tracking-tight leading-none">
+        <div className="space-y-8">
+          {/* H1 with highlight - Centered */}
+          <h1 className="text-[clamp(48px,8vw,72px)] font-semibold tracking-tight leading-none text-center">
             {t.title}
           </h1>
           
-          {/* Subtitle with highlight */}
-          <p className="text-[clamp(16px,2vw,18px)] font-normal">
+          {/* Subtitle with highlight - Centered */}
+          <p className="text-[clamp(16px,2vw,18px)] font-normal text-center">
             <span className="relative inline-block">
               <span className="relative z-10 font-semibold px-1">{t.subtitle}</span>
               <span className={`absolute bottom-0 left-0 w-full h-3 ${highlightColor} -z-0 rounded-sm`}></span>
             </span>
           </p>
 
-          {/* Description */}
-          <div className="pt-4">
-            <p className="text-[clamp(14px,1.5vw,15px)] text-muted-foreground leading-relaxed whitespace-pre-line">
+          {/* Description - Centered */}
+          <div className="pt-4 max-w-2xl mx-auto">
+            <p className="text-[clamp(14px,1.5vw,15px)] text-muted-foreground leading-relaxed whitespace-pre-line text-center">
               {t.description.split(/\b(Golang|Python|PHP|TypeScript|AI|ML\/DL|IoT|Web3|Agentic)\b/).map((part, index) => {
                 const keywords = ['Golang', 'Python', 'PHP', 'TypeScript', 'AI', 'ML/DL', 'IoT', 'Web3', 'Agentic'];
                 const isHighlighted = keywords.includes(part);
@@ -94,8 +83,8 @@ const Index = () => {
             </p>
           </div>
 
-          {/* Available Status with highlight */}
-          <p className="text-[clamp(13px,1.5vw,14px)] text-muted-foreground flex items-center gap-2 pt-2">
+          {/* Available Status with highlight - Centered */}
+          <p className="text-[clamp(13px,1.5vw,14px)] text-muted-foreground flex items-center justify-center gap-2 pt-2">
             <StatusLed />
             <span className="relative inline-block">
               <span className="relative z-10 font-bold px-1">{t.available}</span>
@@ -105,8 +94,8 @@ const Index = () => {
             {t.location}
           </p>
           
-          {/* Social Links */}
-          <div className="flex gap-4">
+          {/* Social Links - Centered */}
+          <div className="flex gap-4 justify-center">
             <a
               href="https://github.com"
               target="_blank"
@@ -142,8 +131,21 @@ const Index = () => {
             </a>
           </div>
 
-          {/* Crypto Info - Discreet & Fixed */}
-          <div className="pt-8 border-t border-border/30 space-y-3">
+          {/* OS Launch Button - Centered */}
+          <div className="pt-12 flex justify-center">
+            <Link 
+              to="/os"
+              className="group relative flex items-center gap-3 px-8 py-4 rounded-xl bg-gradient-to-r from-gradient-start via-gradient-mid to-gradient-end text-white font-semibold text-lg shadow-xl hover:shadow-2xl transition-all hover:scale-105 overflow-hidden"
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-gradient-end via-gradient-mid to-gradient-start opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <Monitor className="w-6 h-6 relative z-10" />
+              <span className="relative z-10">Explorer l'OS Interactif</span>
+              <Sparkles className="w-5 h-5 relative z-10 animate-pulse" />
+            </Link>
+          </div>
+
+          {/* Crypto Info - Discreet & Centered */}
+          <div className="pt-12 border-t border-border/30 space-y-3 max-w-2xl mx-auto">
             <div className="space-y-2 text-[10px] font-mono">
               {/* PGP Key */}
               <div className="group">
@@ -258,14 +260,6 @@ v35Y+YikLoX5DsNlTxrlSQ3Z3g==
             </div>
           </div>
         </div>
-      </div>
-      
-      {/* Divider - Hidden on mobile */}
-      <div className="hidden md:block w-px h-full bg-border" />
-      
-      {/* Right Column - Mac Computer - Hidden on mobile */}
-      <div className="hidden md:flex md:w-1/2 h-full items-center justify-center">
-        <MacScreen />
       </div>
       </div>
     </div>
